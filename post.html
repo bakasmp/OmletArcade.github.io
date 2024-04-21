@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Bài</title>
+    <style>
+        /* CSS để tạo giao diện */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .post {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trang Đăng Bài</h1>
+    
+    <!-- Form để đăng bài -->
+    <form action="post.php" method="post">
+        <label for="title">Tiêu đề:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="content">Nội dung:</label><br>
+        <textarea id="content" name="content" rows="4" required></textarea><br>
+        <input type="submit" value="Đăng bài">
+    </form>
+    
+    <!-- Danh sách các bài đã đăng -->
+    <h2>Danh sách các bài đã đăng:</h2>
+    <div class="post">
+        <h3>Tiêu đề bài đăng 1</h3>
+        <p>Nội dung bài đăng 1</p>
+    </div>
+    <div class="post">
+        <h3>Tiêu đề bài đăng 2</h3>
+        <p>Nội dung bài đăng 2</p>
+    </div>
+    <!-- Thêm các bài đăng khác vào đây -->
+</body>
+  </html>
+  
