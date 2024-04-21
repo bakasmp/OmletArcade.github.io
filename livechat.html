@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <style>
+        #chatbox {
+            width: 400px;
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Room</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="messageInput" placeholder="Nhập tin nhắn...">
+    <button onclick="sendMessage()">Gửi</button>
+
+    <script>
+        // Tạo WebSocket
+        const socket = new WebSocket('ws://localhost:3000');
+
+        // Xử lý khi nhận được tin nhắn từ server
+        socket.onmessage = function(event) {
+            const message = event.data;
+            displayMessage(message);
+        };
+
+        // Hàm gửi tin nhắn
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+            socket.send(message);
+            messageInput.value = '';
+        }
+
+        // Hiển thị tin nhắn trên trang web
+        function displayMessage(message) {
+            const chatbox = document.getElementById('chatbox');
+            const messageElement = document.createElement('div');
+            messageElement.innerText = message;
+            chatbox.appendChild(messageElement);
+            chatbox.scrollTop = chatbox.scrollHeight; // Tự động cuộn xuống tin nhắn mới nhất
+        }
+    </script>
+</body>
+</html>
